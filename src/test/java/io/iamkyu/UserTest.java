@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.EntityManager;
@@ -14,7 +13,6 @@ import java.util.Date;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-@Rollback(value = false)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class UserTest {
 
@@ -23,7 +21,9 @@ public class UserTest {
 
     @Test
     public void testInsert() {
-        User user = new User("foo", "bar", new Date(), "notPersistence");
+        Address home = new Address("123");
+        Address company = new Address("456");
+        User user = new User("foo", "bar", new Date(), "notPersistence", home, company);
         entityManager.persist(user);
     }
 }
