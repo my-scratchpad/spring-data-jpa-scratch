@@ -1,1 +1,15 @@
-
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/test
+    username: foo
+    password: bar
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        format_sql: true
+    show-sql: true
