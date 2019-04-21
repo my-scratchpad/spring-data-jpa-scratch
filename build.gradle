@@ -54,3 +54,6 @@ project(':spring-jpa-custom-repository') {
         implementation project(':data-source')
     }
 }
+
+project(':domain-event') {
+}
