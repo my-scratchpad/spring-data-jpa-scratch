@@ -48,3 +48,9 @@ project(':relation') {
         implementation project(':data-source')
     }
 }
+
+project(':spring-jpa-custom-repository') {
+    dependencies {
+        implementation project(':data-source')
+    }
+}

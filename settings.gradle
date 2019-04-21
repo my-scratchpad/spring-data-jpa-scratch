@@ -6,4 +6,5 @@ pluginManagement {
 rootProject.name = 'spring-data-jpa-scratch'
 include 'data-source'
 include 'relation'
+include 'spring-jpa-custom-repository'
 
