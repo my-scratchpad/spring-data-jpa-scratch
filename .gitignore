@@ -28,3 +28,9 @@ HELP.md
 
 ### VS Code ###
 .vscode/
+
+### Custom ###
+*/build/
+*/out/
+**/querydsl/
+**/generated/
