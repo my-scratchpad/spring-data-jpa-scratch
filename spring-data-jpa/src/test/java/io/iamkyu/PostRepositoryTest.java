@@ -4,6 +4,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.JpaSort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.EntityManager;
@@ -42,5 +45,31 @@ public class PostRepositoryTest {
         assertThat(entityManager.contains(updatedPost)).isTrue();
         assertThat(entityManager.contains(update)).isFalse();
         assertThat(updatedPost).isNotSameAs(update);
+    }
+
+    @Test
+    public void testQuery() {
+        //given
+        Post foo = new Post("Foo");
+        postRepository.save(foo);
+        Post bar = new Post("Bar");
+        postRepository.save(bar);
+
+        //when
+        Post found = postRepository.myFindByTitle("Bar").get(0);
+
+        //then
+        assertThat(found.getTitle()).isEqualTo(bar.getTitle());
+    }
+
+    @Test
+    public void testSortWithSort() {
+        postRepository.myFindByTitleSortByTitleLength("Foo", Sort.by("title"));
+        postRepository.myFindByTitleSortByTitleLength("Foo", JpaSort.unsafe("LENGTH(title)"));
+    }
+
+    @Test(expected = InvalidDataAccessApiUsageException.class)
+    public void testSortWithSortWithFunction() {
+        postRepository.myFindByTitleSortByTitleLength("Foo", Sort.by("LENGTH(title)"));
     }
 }
