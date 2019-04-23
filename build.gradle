@@ -100,3 +100,6 @@ project(':query-dsl') {
         }
     }
 }
+
+project(':spring-data-jpa') {
+}
