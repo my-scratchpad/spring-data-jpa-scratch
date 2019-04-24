@@ -1,4 +1,4 @@
-package io.iamkyu;
+package io.iamkyu.lifecycle;
 
 import lombok.Getter;
 

@@ -1,4 +1,4 @@
-package io.iamkyu;
+package io.iamkyu.lifecycle;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

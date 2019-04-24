@@ -1,4 +1,4 @@
-package io.iamkyu;
+package io.iamkyu.lifecycle;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
