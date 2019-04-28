@@ -51,6 +51,12 @@ subprojects {
     }
 }
 
+project(':data-source') {
+    bootJar { enabled = false }
+    jar { enabled = true }
+}
+
+
 project(':relation') {
     dependencies {
         implementation project(':data-source')
@@ -102,4 +108,23 @@ project(':query-dsl') {
 }
 
 project(':spring-data-jpa') {
+    dependencies {
+        implementation project(':data-source')
+//        annotationProcessor 'org.hibernate:hibernate-jpamodelgen:5.2.12.Final'
+    }
+
+//    tasks.withType(JavaCompile) {
+//        options.annotationProcessorGeneratedSourcesDirectory = file("src/main/generated")
+//    }
+//
+//    compileJava.options.compilerArgs += [
+//    ]
+//
+//    sourceSets {
+//        generated {
+//            java {
+//                srcDirs = ['src/main/java', 'src/main/generated']
+//            }
+//        }
+//    }
 }
